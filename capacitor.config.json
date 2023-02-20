@@ -1,0 +1,9 @@
+{
+  "appId": "com.p_ams_fe.app",
+  "appName": "p-ams-fe",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "allowNavigation": []
+  }
+}

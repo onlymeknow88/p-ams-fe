@@ -1,0 +1,39 @@
+{
+  "name": "p-ams-fe",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:prettier": "prettier --check .",
+    "lint": "npm run lint:prettier",
+    "lintfix": "prettier --write --list-different ."
+  },
+  "dependencies": {
+    "@capacitor/android": "^4.6.2",
+    "@capacitor/cli": "^4.6.2",
+    "@capacitor/core": "^4.6.2",
+    "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",
+    "@nuxtjs/axios": "^5.13.6",
+    "bootstrap": "^5.2.3",
+    "bootstrap-vue": "^2.23.1",
+    "core-js": "^3.19.3",
+    "laravel-vue-pagination": "^4.0.0",
+    "nuxt": "^2.15.8",
+    "nuxt-highcharts": "^2.0.4",
+    "nuxt-sweetalert2": "^1.0.0",
+    "select2": "^4.1.0-rc.0",
+    "vue": "^2.7.14",
+    "vue-cool-lightbox": "^2.7.5",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "vue3-select2-component": "^0.1.7",
+    "webpack": "^4.46.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1"
+  }
+}

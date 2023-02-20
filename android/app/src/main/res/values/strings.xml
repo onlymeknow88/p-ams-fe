@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">p-ams-fe</string>
+    <string name="title_activity_main">p-ams-fe</string>
+    <string name="package_name">com.p_ams_fe.app</string>
+    <string name="custom_url_scheme">com.p_ams_fe.app</string>
+</resources>

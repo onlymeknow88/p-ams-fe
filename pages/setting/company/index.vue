@@ -173,6 +173,12 @@
                       :total-rows="companies.result.companies.total"
                       :per-page="companies.result.companies.per_page"
                       @change="changePage"
+                      align="center"
+                      first-number
+                      last-number
+                      prev-text="Prev"
+                      next-text="Next"
+                      size="sm"
                     >
                     </b-pagination>
                   </div>

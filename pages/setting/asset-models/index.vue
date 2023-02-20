@@ -184,6 +184,12 @@
                       :total-rows="models.result.models.total"
                       :per-page="models.result.models.per_page"
                       @change="changePage"
+                      align="center"
+                      first-number
+                      last-number
+                      prev-text="Prev"
+                      next-text="Next"
+                      size="sm"
                     >
                     </b-pagination>
                   </div>

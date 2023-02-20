@@ -181,6 +181,12 @@
                       :total-rows="departments.result.departments.total"
                       :per-page="departments.result.departments.per_page"
                       @change="changePage"
+                      align="center"
+                      first-number
+                      last-number
+                      prev-text="Prev"
+                      next-text="Next"
+                      size="sm"
                     >
                     </b-pagination>
                   </div>

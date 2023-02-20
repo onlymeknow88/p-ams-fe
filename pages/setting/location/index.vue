@@ -173,6 +173,12 @@
                       :total-rows="locations.result.locations.total"
                       :per-page="locations.result.locations.per_page"
                       @change="changePage"
+                      align="center"
+                      first-number
+                      last-number
+                      prev-text="Prev"
+                      next-text="Next"
+                      size="sm"
                     >
                     </b-pagination>
                   </div>

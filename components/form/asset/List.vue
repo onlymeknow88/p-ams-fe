@@ -482,8 +482,7 @@ export default {
         rtd_location_id: '',
         lan_mac_address: '',
         end_of_warranty: '',
-        description:
-          'Lengkapi Informasi dibawah ini :\nDescription:',
+        description: 'Lengkapi Informasi dibawah ini :\nDescription:',
         notes: '',
         image: null,
         imageData: '',

@@ -184,6 +184,12 @@
                       :total-rows="categories.result.categorys.total"
                       :per-page="categories.result.categorys.per_page"
                       @change="changePage"
+                      align="center"
+                      first-number
+                      last-number
+                      prev-text="Prev"
+                      next-text="Next"
+                      size="sm"
                     >
                     </b-pagination>
                   </div>

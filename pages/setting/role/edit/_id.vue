@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       name: 'Edit',
-      isVisible: false,
+      isLoading: false,
       list_permission: '',
       access: [],
       view: [],
@@ -69,7 +69,7 @@ export default {
 
       this.error.name = false
 
-      this.isVisible = false
+      this.isLoading = false
     },
     slugify(text) {
       return text
@@ -79,7 +79,7 @@ export default {
     },
     async createRole(event) {
       try {
-        this.isVisible = !this.isVisible
+        this.isLoading = !this.isLoading
 
         const data = Object.fromEntries(new FormData(event.target))
 

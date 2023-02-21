@@ -64,16 +64,16 @@
           type="submit"
           class="btn btn-primary color-blue col-12"
           id="submit"
-          :disabled="isVisible"
+          :disabled="isLoading"
         >
           <span
-            :class="!isVisible ? 'd-none' : ''"
+            :class="!isLoading ? 'd-none' : ''"
             class="spinner-border spinner-border-sm me-2"
             role="status"
             aria-hidden="true"
             style="width: 0.8rem; height: 0.8rem"
           ></span>
-          {{ !this.isVisible ? 'Save' : 'Loading ...' }}
+          {{ !this.isLoading ? 'Save' : 'Loading ...' }}
         </button>
         <button type="button" class="btn btn-link col-12 ms-2" @click="reset">
           Reset
@@ -99,7 +99,7 @@ export default {
   data() {
     return {
       name: 'Create',
-      isVisible: false,
+      isLoading: false,
       form: {
         name: '',
         slug: '',
@@ -128,11 +128,11 @@ export default {
     reset() {
       this.form.name = ''
       this.form.slug = null
-      this.isVisible = false
+      this.isLoading = false
     },
     submit(e) {
       e.preventDefault()
-      this.isVisible = true
+      this.isLoading = true
       const data = Object.fromEntries(new FormData(e.target))
       if (this.$route.name == 'setting-role-edit-id') {
         this.SET_ID_UPDATE(this.$route.params.id)

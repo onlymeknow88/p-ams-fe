@@ -66,16 +66,16 @@
           type="submit"
           class="btn btn-primary color-blue col-12"
           id="submit"
-          :disabled="isVisible"
+          :disabled="isLoading"
         >
           <span
-            :class="!isVisible ? 'd-none' : ''"
+            :class="!isLoading ? 'd-none' : ''"
             class="spinner-border spinner-border-sm me-2"
             role="status"
             aria-hidden="true"
             style="width: 0.8rem; height: 0.8rem"
           ></span>
-          {{ !this.isVisible ? 'Save' : 'Loading ...' }}
+          {{ !this.isLoading ? 'Save' : 'Loading ...' }}
         </button>
         <button type="button" class="btn btn-link col-12" @click="reset">
           Reset
@@ -100,7 +100,7 @@ export default {
   },
   data() {
     return {
-      isVisible: false,
+      isLoading: false,
       form: {
         name: '',
         company_tag: '',
@@ -124,11 +124,11 @@ export default {
       this.form.name = ''
       this.form.company_tag = ''
 
-      this.isVisible = false
+      this.isLoading = false
     },
     submit(e) {
       e.preventDefault()
-      this.isVisible = true
+      this.isLoading = true
 
       if (this.$route.name == 'setting-company-edit-id') {
         this.SET_ID_UPDATE(this.$route.params.id)

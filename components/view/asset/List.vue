@@ -188,16 +188,16 @@
                 id="submit"
                 @click="submitFiles"
                 class="btn btn-primary color-blue"
-                :disabled="isVisible"
+                :disabled="isLoading"
               >
                 <span
-                  :class="!isVisible ? 'd-none' : ''"
+                  :class="!isLoading ? 'd-none' : ''"
                   class="spinner-border spinner-border-sm me-2"
                   role="status"
                   aria-hidden="true"
                   style="width: 0.8rem; height: 0.8rem"
                 ></span>
-                {{ !this.isVisible ? 'Upload' : 'Loading ...' }}
+                {{ !this.isLoading ? 'Upload' : 'Loading ...' }}
               </button>
             </div>
             <!-- </form> -->
@@ -564,7 +564,7 @@ export default {
     return {
       name: 'Detail Asset',
       URLBackend: 'http://p-ams-backend.test',
-      isVisible: false,
+      isLoading: false,
       isFile: false,
       displayModalPDF: false,
       displayModalIMG: false,
@@ -653,7 +653,7 @@ export default {
     //   this.getFileData(this.$route.params.id)
     // },
     submitFiles() {
-      this.isVisible = true
+      this.isLoading = true
       const data = new FormData()
 
       for (var i = 0; i < this.multiplesFIles.length; i++) {
@@ -746,7 +746,7 @@ export default {
       this.$router.push({ name: 'assets-list-assets' })
     },
     reset() {
-      this.isVisible = false
+      this.isLoading = false
       this.isFile = false
       this.multiplesFIles = []
 

@@ -33,7 +33,7 @@ export default {
     return {
       name: 'Create',
       masterMenu: [],
-      isVisible: false,
+      isLoading: false,
       error: {
         nama_menu: false,
         level_menu: false,
@@ -70,11 +70,11 @@ export default {
       this.error.nama_menu = false
       this.error.level_menu = false
 
-      this.isVisible = false
+      this.isLoading = false
     },
     async createMenu() {
       try {
-        this.isVisible = !this.isVisible
+        this.isLoading = !this.isLoading
         let Response = await this.$axios
           .$post('menu/create', this.menu)
           .catch((error) => {

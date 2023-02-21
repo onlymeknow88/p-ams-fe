@@ -133,7 +133,10 @@
                       <NuxtLink
                         v-if="row.item.assigned_to === null"
                         class="btn btn-success color-darkgreen btn-sm form-text-12"
-                        to="/"
+                        :to="{
+                          name: 'assets-list-assets-assign-id',
+                          params: { id: row.item.id },
+                        }"
                         :class="
                           row.item.status_labels.StatuslabelTypeForSelect ==
                           'undeployable'

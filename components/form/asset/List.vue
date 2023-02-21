@@ -75,7 +75,7 @@
           >Models</label
         >
         <div class="col-sm-4">
-          <Select2ModelsAssetsDropdownModels
+          <Select2AssetsDropdownModels
             :errror="errors"
             :edit="assets"
             v-model="form.model_id"
@@ -102,7 +102,7 @@
             id="type"
             @input="selected($event)"
           >
-            <option value="0" selected disabled>Select an option</option>
+            <option value="" selected disabled>Select an option</option>
             <option value="Accesories">Accesories</option>
             <option value="Asset">Asset</option>
             <option value="Consumable">Consumable</option>
@@ -125,7 +125,7 @@
           >Status</label
         >
         <div class="col-sm-4">
-          <Select2ModelsAssetsDropdownStatus
+          <Select2AssetsDropdownStatus
             :errror="errors"
             :edit="assets"
             v-model="form.status_id"
@@ -144,7 +144,7 @@
           >Location</label
         >
         <div class="col-sm-4">
-          <Select2ModelsAssetsDropdownRTDLocation
+          <Select2AssetsDropdownRTDLocation
             :errror="errors"
             :edit="assets"
             v-model="form.rtd_location_id"
@@ -163,7 +163,7 @@
           >Company</label
         >
         <div class="col-sm-4">
-          <Select2ModelsAssetsDropdownCompany
+          <Select2AssetsDropdownCompany
             :errror="errors"
             :edit="assets"
             v-model="form.company_id"
@@ -418,18 +418,18 @@
           type="submit"
           class="btn btn-primary color-blue col-12"
           id="submit"
-          :disabled="isVisible"
+          :disabled="isLoading"
         >
           <span
-            :class="!isVisible ? 'd-none' : ''"
+            :class="!isLoading ? 'd-none' : ''"
             class="spinner-border spinner-border-sm me-2"
             role="status"
             aria-hidden="true"
             style="width: 0.8rem; height: 0.8rem"
           ></span>
-          {{ !this.isVisible ? 'Save' : 'Loading ...' }}
+          {{ !this.isLoading ? 'Save' : 'Loading ...' }}
         </button>
-        <button type="button" class="btn btn-link col-12" @click="reset">
+        <button type="button" class="btn btn-link col-12 ms-2" @click="reset">
           Reset
         </button>
       </div>
@@ -467,7 +467,7 @@ export default {
     return {
       name: 'Create',
       URLBackend: 'http://p-ams-backend.test',
-      isVisible: false,
+      isLoading: false,
       isFile: false,
       fileURLImage: '',
       form: {
@@ -509,7 +509,7 @@ export default {
       this.form.wifi_mac_address = ''
       this.form.rtd_location_id = ''
       this.form.lan_mac_address = ''
-      this.form.description = ''
+      this.form.description = 'Lengkapi Informasi dibawah ini :\nDescription:'
       this.form.end_of_warranty = ''
       this.form.notes = ''
 
@@ -521,11 +521,11 @@ export default {
       this.SET_ERRORS([])
 
       this.isFile = false
-      this.isVisible = false
+      this.isLoading = false
     },
     submit(e) {
       e.preventDefault()
-      this.isVisible = true
+      this.isLoading = true
       const data = new FormData()
       data.append('image', this.form.image)
       data.append('name', this.form.name)

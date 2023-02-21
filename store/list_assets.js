@@ -129,21 +129,6 @@ export const actions = {
         })
     })
   },
-  storeAssetsData({ dispatch, commit }, payload) {
-    return new Promise((resolve, reject) => {
-      this.$axios
-        .post('/list-assets/create', payload)
-        .then((response) => {
-          commit('SET_SUCCESS', response.data.meta)
-          dispatch('getAssetsData')
-          resolve()
-        })
-        .catch((error) => {
-          commit('SET_ERRORS', error.response.data.errors)
-          // console.log(error.response.data.errors)
-        })
-    })
-  },
   getData({ commit }, payload) {
     return new Promise((resolve, reject) => {
       this.$axios.get(`/list-assets?id=${payload}`).then((response) => {
@@ -201,7 +186,21 @@ export const actions = {
         })
     })
   },
-
+  storeAssetsData({ dispatch, commit }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .post('/list-assets/create', payload)
+        .then((response) => {
+          commit('SET_SUCCESS', response.data.meta)
+          dispatch('getAssetsData')
+          resolve()
+        })
+        .catch((error) => {
+          commit('SET_ERRORS', error.response.data.errors)
+          // console.log(error.response.data.errors)
+        })
+    })
+  },
   uploadFileData({ dispatch, state, commit }, payload) {
     return new Promise((resolve, reject) => {
       this.$axios
@@ -236,27 +235,19 @@ export const actions = {
         })
     })
   },
-  // downloadFileData({ dispatch, commit }, payload) {
-  //   const auth_token = localStorage.getItem('auth._token.local')
-  //   const filename = payload ? payload : ''
-  //   return new Promise((resolve, reject) => {
-  //     this.$axios
-  //       .get(`/list-assets/upload-file/download/${payload}`, {
-  //         headers: {
-  //           Authorization: auth_token,
-  //         },
-  //         responseType: 'blob',
-  //       })
-  //       .then((response) => {
-  //         // var fileURL = window.URL.createObjectURL(new Blob([response.data]))
-  //         // var fURL = document.createElement('a')
-
-  //         // fURL.href = fileURL
-  //         // fURL.setAttribute('download', filename)
-  //         // document.body.appendChild(fURL)
-
-  //         // fURL.click()
-  //       })
-  //   })
-  // },
+  assignAssetsData({ dispatch, commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .post(`/list-assets/assign/${state.id}`, payload)
+        .then((response) => {
+          console.log(response)
+          commit('SET_SUCCESS', response.data.meta)
+          dispatch('getAssetsData')
+          resolve()
+        })
+        .catch((error) => {
+          commit('SET_ERRORS', error.response.data.errors)
+        })
+    })
+  },
 }

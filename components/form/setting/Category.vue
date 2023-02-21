@@ -141,16 +141,16 @@
             type="submit"
             class="btn btn-primary color-blue col-12"
             id="submit"
-            :disabled="isVisible"
+            :disabled="isLoading"
           >
             <span
-              :class="!isVisible ? 'd-none' : ''"
+              :class="!isLoading ? 'd-none' : ''"
               class="spinner-border spinner-border-sm me-2"
               role="status"
               aria-hidden="true"
               style="width: 0.8rem; height: 0.8rem"
             ></span>
-            {{ !this.isVisible ? 'Save' : 'Loading ...' }}
+            {{ !this.isLoading ? 'Save' : 'Loading ...' }}
           </button>
           <button
             type="button"
@@ -185,7 +185,7 @@ export default {
     return {
       name: 'Create',
       URLBackend: 'http://p-ams-backend.test',
-      isVisible: false,
+      isLoading: false,
       isFile: false,
       fileURLImage: '',
       form: {
@@ -219,11 +219,11 @@ export default {
       this.$refs.image.value = null
 
       this.isFile = false
-      this.isVisible = false
+      this.isLoading = false
     },
     submit(e) {
       e.preventDefault()
-      this.isVisible = true
+      this.isLoading = true
       const data = new FormData()
       data.append('image', this.form.image)
       data.append('name', this.form.name)

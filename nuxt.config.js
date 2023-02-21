@@ -72,6 +72,7 @@ export default {
   plugins: [
     // { src: '@/plugins/lightbox.js' },
     { src: '@/plugins/disableconsole.js' },
+    { src: '@/plugins/vue_datepickker.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

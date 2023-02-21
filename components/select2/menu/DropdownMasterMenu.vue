@@ -127,7 +127,7 @@ export default {
 
 <!-- <template>
   <div class="dropdown-wrapper">
-    <div @click="isVisible = !isVisible" class="selected-item" v-bind:class="{ 'is-invalid': error.master_menu }">
+    <div @click="isLoading = !isLoading" class="selected-item" v-bind:class="{ 'is-invalid': error.master_menu }">
       <span v-if="selectedItem">{{ selectedItem.name }}</span>
       <span v-else-if="this.$route.name == 'menu-edit-id'">{{ edit.parent != null ? edit.parent.nama_menu : 'Choose an option' }}</span>
       <span v-else>Choose an option</span>
@@ -143,7 +143,7 @@ export default {
         />
         <img v-if="error.master_menu" class="icon-dropdown" src="/assets/icon/icon_info_error.svg" alt="" width="14" height="14">
         <img
-          :class="isVisible ? 'dropdown' : ''"
+          :class="isLoading ? 'dropdown' : ''"
           class="icon-dropdown"
           src="/assets/icon/icon_arrow_up.svg"
           alt=""
@@ -152,7 +152,7 @@ export default {
         />
       </div>
     </div>
-    <div v-show="isVisible" class="dropdown-popover" id="dropdown-popover">
+    <div v-show="isLoading" class="dropdown-popover" id="dropdown-popover">
       <div class="item-popover">
         <input
           @input="debouncesearch($event)"
@@ -187,7 +187,7 @@ export default {
     return {
       search: '',
       selectedItem: null,
-      isVisible: false,
+      isLoading: false,
       timeout: null,
       data: [],
     }
@@ -198,12 +198,12 @@ export default {
   methods: {
     selected(val) {
       this.selectedItem = val
-      this.isVisible = false
+      this.isLoading = false
       this.$emit('input', this.selectedItem.id)
     },
     close() {
       this.selectedItem = null
-      this.isVisible = false
+      this.isLoading = false
       this.$emit('input', null)
     },
     async getData() {

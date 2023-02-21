@@ -27,13 +27,13 @@
       <div class="form-group">
         <button type="submit" class="btn btn-signin mb-30">
           <span
-            :class="!isVisible ? 'd-none' : ''"
+            :class="!isLoading ? 'd-none' : ''"
             class="spinner-border spinner-border-sm me-2"
             role="status"
             aria-hidden="true"
             style="width: 0.8rem; height: 0.8rem"
           ></span>
-          {{ !this.isVisible ? 'Login' : 'Loading ...' }}
+          {{ !this.isLoading ? 'Login' : 'Loading ...' }}
         </button>
       </div>
     </form>
@@ -50,7 +50,7 @@ export default {
   layout: 'login',
   data() {
     return {
-      isVisible: false,
+      isLoading: false,
       login: {
         username: 'fwivindi',
         password: '12345678',
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     async userLogin() {
-      this.isVisible = true
+      this.isLoading = true
       try {
         let response = await this.$auth.loginWith('local', { data: this.login })
         this.$router.push({ path: '/' })
